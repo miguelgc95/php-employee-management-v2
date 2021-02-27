@@ -1,6 +1,6 @@
 <?php
 //TODO change want must be changed
-define('URL', 'http://localhost/');
+define('URL', "http://localhost/php-employee-management-v2/");
 
 define('HOST', 'localhost');
 define('DB', 'mvc');

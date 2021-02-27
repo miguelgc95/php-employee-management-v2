@@ -8,10 +8,10 @@ class Controller{
     }
 
     function loadModel($model){
-        $url = 'models/'.$model.'model.php';
+        $urll = 'models/'.$model.'model.php';
 
-        if(file_exists($url)){
-            require $url;
+        if(file_exists($urll)){
+            require $urll;
 
             $modelName = $model.'Model';
             $this->model = new $modelName();

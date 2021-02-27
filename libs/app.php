@@ -7,11 +7,12 @@ class App
         $url = isset($_GET['url']) ? $_GET['url'] : null;
         $url = rtrim($url, '/');
         $url = explode('/', $url);
+        var_dump($url);
 
         // cuando se ingresa sin definir controlador
         if (empty($url[0])) {
             $archivoController = 'controllers/main.php';
-            require_once $archivoController;
+            require_once($archivoController);
             $controller = new Main();
             $controller->loadModel('main');
             $controller->render();
@@ -19,11 +20,14 @@ class App
         } else {
             $archivoController = 'controllers/' . $url[0] . '.php';
             if (file_exists($archivoController)) {
-                echo "ok";
+                require_once($archivoController);
+                $controller = new $url[0];
+                $controller->loadModel($url[0]);
+                $controller->render();
             } else {
                 $archivoController = 'controllers/errors.php';
-                require_once $archivoController;
-                new Errors();//igual no hace falta definir la variable no?
+                require_once($archivoController);
+                new Errors();
             }
         }
     }
