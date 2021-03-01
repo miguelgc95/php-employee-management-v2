@@ -9,24 +9,32 @@ class App
         $url = explode('/', $url);
         var_dump($url);
 
-        // cuando se ingresa sin definir controlador
+        //$session = new Session($url[0]);
+
         if (empty($url[0])) {
-            $archivoController = 'controllers/main.php';
-            require_once($archivoController);
+            $controllerRoute = 'controllers/mainController.php';
+            require_once($controllerRoute);
             $controller = new Main();
-            $controller->loadModel('main');
             $controller->render();
-            return false;
         } else {
-            $archivoController = 'controllers/' . $url[0] . '.php';
-            if (file_exists($archivoController)) {
-                require_once($archivoController);
+            $controllerRoute = 'controllers/' . $url[0] . 'Controller.php';
+            if (file_exists($controllerRoute)) {
+                require_once $controllerRoute;
                 $controller = new $url[0];
                 $controller->loadModel($url[0]);
-                $controller->render();
+                $nparam = sizeof($url);
+                if ($nparam > 2) {
+                    $param = [];
+                    for ($i = 2; $i < $nparam; $i++) {
+                        array_push($param, $url[$i]);
+                    }
+                    $controller->{$url[1]}($param);
+                } else if ($nparam > 1) {
+                    $controller->{$url[1]}();
+                }
             } else {
-                $archivoController = 'controllers/errors.php';
-                require_once($archivoController);
+                $controllerRoute = 'controllers/errorsController.php';
+                require_once($controllerRoute);
                 new Errors();
             }
         }

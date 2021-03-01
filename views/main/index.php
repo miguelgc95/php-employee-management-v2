@@ -31,8 +31,8 @@
     <form class="form-signin" action="<?= URL;?>main/login" method="post">
       <img class="" src="<?= URL;?>assetsOld/images/logo_AS2.png" alt="" width="72" height="57">
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-      <input type="email" id="uEmail" name="uEmail" class="mb-2  form-control" aria-describedby="emailHelp" required value="admin@assemblerschool.com">
-      <input type="password" id="uPassword" class="mb-3  form-control" placeholder="Password" name="uPassword" value="123456" required>
+      <input type="email" id="uEmail" name="email" class="mb-2  form-control" aria-describedby="emailHelp" required value="admin@assemblerschool.com">
+      <input type="password" id="uPassword" class="mb-3  form-control" placeholder="Password" name="password" value="123456" required>
       <button class="w-100 btn btn-lg btn-ass-submit" type="submit">Sign in</button>
     </form>
   </main>

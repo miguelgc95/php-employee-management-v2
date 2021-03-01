@@ -13,16 +13,6 @@ function validateUser($u_email, $u_password)
   return $result;
 }
 
-function saveSesion($user)
-{
-  session_start();
-  $_SESSION['id'] = $user['userId'];
-  $_SESSION['email'] = $user['email'];
-  $_SESSION['name'] = $user['name'];
-  $_SESSION['init'] = time();
-  $_SESSION['life'] = 600;
-}
-
 function logOut()
 {
   session_start();
