@@ -2,8 +2,8 @@
 
 class View{
 
-    function render($nombre){
-        require 'views/' . $nombre . '.php';
+    function render($name){
+        require('views/' . $name . '.php');
     }
 }
 

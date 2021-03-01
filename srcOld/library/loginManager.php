@@ -13,8 +13,3 @@ function validateUser($u_email, $u_password)
   return $result;
 }
 
-function logOut()
-{
-  session_start();
-  session_destroy();
-}

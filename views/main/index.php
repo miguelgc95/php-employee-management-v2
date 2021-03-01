@@ -1,10 +1,3 @@
-
-<!-- Application entry point. Login view -->
-<?php
-// if (isset($_GET['error'])) {
-//   $message = $_GET['error'];
-//}
-?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 
@@ -22,10 +15,10 @@
 <body class="text-center h-100">
 
 <main class="login-ass">
-<?= isset($message) ? "
+<?= isset($this->message) ? "
 <div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
   <div class='toast-body'>
-    $message
+    {$this->message}
   </div>
 </div>" : "" ?>
     <form class="form-signin" action="<?= URL;?>main/login" method="post">
