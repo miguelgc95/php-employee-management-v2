@@ -15,7 +15,7 @@ class Main extends Controller
             $this->saveSession($user);
             header('Location: ' . URL . 'dashboard');
         }else{
-            $this->view->message = 'Incorrect credentials';
+            $this->view->message = 'Incorrect e-mail or password';
             $this->view->render('main/index');
         }
     }
@@ -39,5 +39,8 @@ class Main extends Controller
     {
         session_start(); //instanciado en App
         session_destroy();
+        $this->view->message = "Logout correctly";
+        $this->view->render('main/index');
+
     }
 }

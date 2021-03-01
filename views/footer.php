@@ -3,5 +3,5 @@
 </footer>
 
 
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../node_modules/jsgrid/dist/jsgrid.min.js"></script>
+<script src="<?= URL;?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?= URL;?>node_modules/jsgrid/dist/jsgrid.min.js"></script>

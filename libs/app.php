@@ -31,6 +31,8 @@ class App
                     $controller->{$url[1]}($param);
                 } else if ($nparam > 1) {
                     $controller->{$url[1]}();
+                } else {
+                    $controller->render();
                 }
             } else {
                 $controllerRoute = 'controllers/errorsController.php';
