@@ -1,5 +1,5 @@
 <?php
-require("./library/avatarsApi.php");
+require("views/dashboard/avatarsApi.php");
 $counter = 1;
 foreach ($result as $avatar) {
     echo '<label class="label-avatar" for="avatar' . $counter . '">

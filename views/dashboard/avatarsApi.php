@@ -1,4 +1,5 @@
 <?php
+
 function uifacesRequest($age = false, $gender = false, $limit = 8)
 {
     $partial_url = $gender ? "&gender[]=$gender&from_age=" . ($age-5) . "&to_age=" . ($age+10) : "";
