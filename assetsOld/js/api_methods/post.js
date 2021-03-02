@@ -1,7 +1,7 @@
 export const postMethod = {
   url: function (pathToSend, data) {
     const request = {
-      url: pathToSend,
+      url: `${URL}dashboard/${pathToSend}`,
       data: data,
       type: 'POST',
     };

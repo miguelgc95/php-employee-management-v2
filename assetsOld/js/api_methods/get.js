@@ -1,7 +1,7 @@
 export const getMethod = {
   url: function (pathToSend, data) {
     const request = {
-      url: pathToSend,
+      url: `${URL}dashboard/${pathToSend}`,
       data: data,
       type: 'GET',
     };

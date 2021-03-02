@@ -17,7 +17,7 @@ export const helpers = {
 
       onItemDeleting: function (args) {
         deleteMethod
-        .url('../src/library/employeeController.php', args.item.id)
+        .url('deleteEmployee', args.item.id)
         .done(() => {
           $('.toast-msg').html(`
               <div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
@@ -36,7 +36,7 @@ export const helpers = {
       },
       onItemInserting: function (args) {
         postMethod
-          .url('../src/library/employeeController.php', args.item)
+          .url('addEmployee', args.item)
           .done(data => {
                 args.item.id = data;
                 args.item.lastName = '';
@@ -58,7 +58,7 @@ export const helpers = {
       },
       onItemUpdating: function (args) {
         putMethod
-          .url('../src/library/employeeController.php', args.item)
+          .url('updateEmployee', args.item)
           .done(() => {
             $('.toast-msg').html(`
                 <div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
@@ -76,7 +76,7 @@ export const helpers = {
           });
       },
       rowClick: function (args) {
-        window.location.href = `employee.php?employeeId=${args.item.id}`;
+        window.location.href = `${URL}dashboard/employee/${args.item.id}`;
       },
 
       fields: [

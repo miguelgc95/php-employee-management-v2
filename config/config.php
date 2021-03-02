@@ -3,7 +3,7 @@
 define('URL', "http://localhost/php-employee-management-v2/");
 
 define('HOST', 'localhost');
-define('DB', 'employeeV2');
+define('DB', 'employees_manager');
 define('USER', 'root');
 define('PASSWORD', "");
 define('CHARSET', 'utf8mb4');

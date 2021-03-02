@@ -1,13 +1,15 @@
 <?php
 
-require("views/header.php"); ?>
+require("views/header.php");
+
+?>
 
 <section class="toast-msg">
-    <?= isset($this->message) ? "
+	<?= isset($this->message) ? "
 <div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
-  <div class='toast-body'>
-    {$this->message}
-  </div>
+	<div class='toast-body'>
+    	{$this->message}
+	</div>
 </div>" : "" ?>
 </section>
 
@@ -16,13 +18,15 @@ require("views/header.php"); ?>
 
 <?php require("views/footer.php"); ?>
 
-
-<script src="<?= URL; ?>assets/js/index.js" type="module"></script>
 <script>
-    $(".toast").toast({
-        delay: 3000
-    });
-    $(".toast").toast('show');
+	const URL = "<?= URL; ?>"
+</script>
+<script src="<?= URL; ?>assetsOld/js/index.js" type="module"></script>
+<script>
+	$(".toast").toast({
+		delay: 3000
+	});
+	$(".toast").toast('show');
 </script>
 </body>
 
