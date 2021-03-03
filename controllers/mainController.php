@@ -31,7 +31,7 @@ class Main extends Controller
         $_SESSION['email'] = $user['email'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['init'] = time();
-        $_SESSION['life'] = 6;
+        $_SESSION['life'] = 600;
     }
 
     function logout()

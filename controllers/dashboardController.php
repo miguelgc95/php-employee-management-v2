@@ -35,13 +35,13 @@ class Dashboard extends Controller
         $_POST['gender'] = isset($_POST['gender']) ? $_POST['gender'] :  null;
         $_POST['avatar'] = isset($_POST['avatar']) ? $_POST['avatar'] :  null;
         $response = $this->model->add($_POST);
-        $this->view->message = $response[0];
+        $this->view->message = $response;
         if (isset($_POST['employeePage'])) {
             $this->view->employee = $_POST;
             $this->view->render('dashboard/employee');
         } else {
             header('Content-Type: application/json');
-            echo json_encode($response[1]);
+            echo json_encode($this->model->getIdByEmail($_POST['email']));
         }
     }
     public function updateEmployee()

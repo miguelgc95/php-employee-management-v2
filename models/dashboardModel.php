@@ -35,10 +35,19 @@ class DashboardModel extends Model
         $query = $this->db->connect()->prepare("INSERT INTO employees (id, name, lastName, email, gender, city, streetAddress, state, age, postalCode, phoneNumber, avatar) VALUES (null, :name , :lastName, :email, :gender, :city, :streetAddress, :state, :age, :postalCode, :phoneNumber, :avatar)");
         try {
             $query->execute(['name' => $employee['name'], 'lastName' => $employee['lastName'], 'email' => $employee['email'], 'gender' => $employee['gender'], 'city' => $employee['city'], 'streetAddress' => $employee['streetAddress'], 'state' => $employee['state'], 'age' => $employee['age'], 'postalCode' => $employee['postalCode'], 'phoneNumber' => $employee['phoneNumber'], 'avatar' => $employee['avatar']]);
+            return 'User added correctly';
+        } catch (PDOException $e) {
+            return ["Problem with database", $e];
+        }
+    }
+
+    public function getIdByEmail($email)
+    {
+        try {
             $getId = $this->db->connect()->prepare('SELECT id FROM employees WHERE email =:email');
-            $getId->execute(['email' => $employee['email']]);
+            $getId->execute(['email' => $email]);
             $id = $getId->fetch();
-            return ['User added correctly', $id['id']];
+            return $id['id'];
         } catch (PDOException $e) {
             return ["Problem with database", $e];
         }
