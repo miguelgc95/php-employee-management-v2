@@ -43,7 +43,7 @@ class DashboardModel extends Model
 
     public function update($employee)
     {
-        $query = $this->db->connect()->prepare("UPDATE employees SET name = :name , lastName = :lastName, email= :email, gender= :gender, city=:city, streetAddress=:streetAddress, state=:state, age=:age, postalCode=:postalCode, phoneNumber=:phoneNumber, avatar=:avatar WHERE id = :id");
+        $query = $this->db->connect()->prepare("UPDATE employees SET name = :name, lastName = :lastName, email= :email, gender= :gender, city=:city, streetAddress=:streetAddress, state=:state, age=:age, postalCode=:postalCode, phoneNumber=:phoneNumber, avatar=:avatar WHERE id = :id");
         try {
             $query->execute(['name' => $employee['name'], 'lastName' => $employee['lastName'], 'email' => $employee['email'], 'gender' => $employee['gender'], 'city' => $employee['city'], 'streetAddress' => $employee['streetAddress'], 'state' => $employee['state'], 'age' => $employee['age'], 'postalCode' => $employee['postalCode'], 'phoneNumber' => $employee['phoneNumber'], 'avatar' => $employee['avatar'], 'id' => $employee['id']]);
             return 'User updated correctly';
@@ -52,7 +52,8 @@ class DashboardModel extends Model
         }
     }
 
-    public function getById($id){
+    public function getById($id)
+    {
         $query = $this->db->connect()->prepare("SELECT * FROM employees WHERE id = :id");
         try {
             $query->execute(['id' => $id[0]]);

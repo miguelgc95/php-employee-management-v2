@@ -3,13 +3,21 @@
 require("views/header.php");
 
 ?>
+<section class="toast-msg">
+	<?= isset($this->message) ? "
+<div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
+	<div class='toast-body'>
+    	{$this->message}
+	</div>
+</div>" : "" ?>
+</section>
 <section id="form-wrapper">
 	<div class="container overflow-hidden">
 		<form class="needs-validation" action="<?= URL . "dashboard/" . (isset($this->employee) ?  "updateEmployee" : "addEmployee"); ?>" method="POST">
-			<img src="<?= isset($this->employee) ? $this->employee['avatar'] : URL . "assetsOld/images/no-user.png" ?>" class="img_profile" alt="avatar">
+			<img src="<?= isset($this->employee['avatar']) ? $this->employee['avatar'] : URL . "assetsOld/images/no-user.png" ?>" class="img_profile" alt="avatar">
 			<div class="container_avatar">
 				<?php
-					require("views/dashboard/imageGallery.php");
+				//require("views/dashboard/imageGallery.php");
 				?>
 			</div>
 			<h4 class="mb-3"><?= isset($this->employee) ? $this->employee['name'] . "'s profile" : "New employee" ?></h4>
@@ -63,7 +71,7 @@ require("views/header.php");
 
 				<div class="col-sm-6 p-2">
 					<label for="uPC" class="form-label">Postal Code</label>
-					<input type="number" class="form-control" id="uPC" name="postalCode" required value="<?= isset($this->employee) ? $this->employee['PC'] : '' ?>">
+					<input type="number" class="form-control" id="uPC" name="postalCode" required value="<?= isset($this->employee) ? $this->employee['postalCode'] : '' ?>">
 				</div>
 
 				<div class="col-sm-6 p-2">
@@ -78,12 +86,17 @@ require("views/header.php");
 		</form>
 	</div>
 </section>
-
 <?php
 
-require("views/footer.php");
+require "views/footer.php";
 
 ?>
+<script>
+	$(".toast").toast({
+		delay: 3000
+	});
+	$(".toast").toast('show');
+</script>
 </body>
 
 </html>

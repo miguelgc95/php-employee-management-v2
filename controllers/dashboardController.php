@@ -23,10 +23,10 @@ class Dashboard extends Controller
         $this->view->render("dashboard/employee");
     }
 
-    public function deleteEmployee($id)
+    public function deleteEmployee()
     {
-        $this->view->message = $this->model->delete($id);
-        $this->view->render("dashboard/index");
+        $query = getQueryStringParameters();
+        echo $this->model->delete($query['data']);
     }
     public function addEmployee()
     {
@@ -39,16 +39,21 @@ class Dashboard extends Controller
         } else {
             header('Content-Type: application/json');
             echo json_encode($_POST['id']);
-        }//TODO: return id
+        } //TODO: return id
     }
     public function updateEmployee()
     {
-        parse_str(file_get_contents("php://input"), $employee);
-        $this->view->message = $this->model->update($employee);
-        if (isset($employee['employeePage'])) {
-            $this->view->render('dashboard/index');
+        $query = isset($_POST['lastName']) ? $_POST : getQueryStringParameters();
+        $query['avatar'] = isset($query['avatar']) ? $query['avatar'] :  null;
+        $this->view->message = $this->model->update($query);
+        if (isset($query['employeePage'])) {
+            $this->view->employee = $_POST;
+            $this->view->render('dashboard/employee');
+        } else {
+            echo $this->view->message;
         }
     }
+
     public function employee($id)
     {
         $this->view->employee = $this->model->getById($id);
