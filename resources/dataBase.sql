@@ -16,7 +16,7 @@ CREATE TABLE employees (
   state varchar(3) NOT NULL,
   postalCode varchar(50) NOT NULL,
   phoneNumber varchar(50) NOT NULL UNIQUE,
-  avatar varchar(100) DEFAULT '"http://localhost/prueba_employees_v2/assets/images/no-user.png"',
+  avatar varchar(100) DEFAULT '"http://localhost/prueba_employees_v2/assetsOld/images/no-user.png"',
   PRIMARY KEY (id)
 );
 

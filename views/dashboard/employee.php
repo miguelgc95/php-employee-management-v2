@@ -17,7 +17,7 @@ require("views/header.php");
 			<img src="<?= isset($this->employee['avatar']) ? $this->employee['avatar'] : URL . "assetsOld/images/no-user.png" ?>" class="img_profile" alt="avatar">
 			<div class="container_avatar">
 				<?php
-				//require("views/dashboard/imageGallery.php");
+				if (isset($this->result)) require("views/dashboard/imageGallery.php");
 				?>
 			</div>
 			<h4 class="mb-3"><?= isset($this->employee) ? $this->employee['name'] . "'s profile" : "New employee" ?></h4>

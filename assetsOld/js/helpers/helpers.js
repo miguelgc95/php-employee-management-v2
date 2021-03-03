@@ -37,6 +37,7 @@ export const helpers = {
           args.item.id = data;
           args.item.lastName = '';
           args.item.gender = '';
+          $('#main-wrapper').jsGrid('refresh');
           $('.toast-msg').html(`
                 <div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
                   <div class='toast-body'>

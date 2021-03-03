@@ -20,6 +20,7 @@ class Dashboard extends Controller
 
     public function newEmployee()
     {
+        $this->view->result = $this->model->uifacesRequest();
         $this->view->render("dashboard/employee");
     }
 
@@ -33,13 +34,15 @@ class Dashboard extends Controller
         $_POST['lastName'] = isset($_POST['lastName']) ? $_POST['lastName'] :  null;
         $_POST['gender'] = isset($_POST['gender']) ? $_POST['gender'] :  null;
         $_POST['avatar'] = isset($_POST['avatar']) ? $_POST['avatar'] :  null;
-        $this->view->message = $this->model->add($_POST);
+        $response = $this->model->add($_POST);
+        $this->view->message = $response[0];
         if (isset($_POST['employeePage'])) {
-            $this->view->render('dashboard/index');
+            $this->view->employee = $_POST;
+            $this->view->render('dashboard/employee');
         } else {
             header('Content-Type: application/json');
-            echo json_encode($_POST['id']);
-        } //TODO: return id
+            echo json_encode($response[1]);
+        }
     }
     public function updateEmployee()
     {
@@ -57,6 +60,14 @@ class Dashboard extends Controller
     public function employee($id)
     {
         $this->view->employee = $this->model->getById($id);
+        $gender = $this->view->employee['gender'] == 'man' ? 'male' : ($this->view->employee['gender'] == "woman" ? "female" : "");
+
+        if (isset($this->view->employee['avatar'])) {
+            $this->view->result = $this->model->uifacesRequest($this->view->employee['age'], $gender, 7);
+            array_push($this->view->result, array("photo" => $this->view->employee['avatar']));
+        } else {
+            $this->view->result = $this->model->uifacesRequest($this->view->employee['age'], $gender);
+        }
         $this->view->render("dashboard/employee");
     }
 }

@@ -35,9 +35,12 @@ class DashboardModel extends Model
         $query = $this->db->connect()->prepare("INSERT INTO employees (id, name, lastName, email, gender, city, streetAddress, state, age, postalCode, phoneNumber, avatar) VALUES (null, :name , :lastName, :email, :gender, :city, :streetAddress, :state, :age, :postalCode, :phoneNumber, :avatar)");
         try {
             $query->execute(['name' => $employee['name'], 'lastName' => $employee['lastName'], 'email' => $employee['email'], 'gender' => $employee['gender'], 'city' => $employee['city'], 'streetAddress' => $employee['streetAddress'], 'state' => $employee['state'], 'age' => $employee['age'], 'postalCode' => $employee['postalCode'], 'phoneNumber' => $employee['phoneNumber'], 'avatar' => $employee['avatar']]);
-            return 'User added correctly';
+            $getId = $this->db->connect()->prepare('SELECT id FROM employees WHERE email =:email');
+            $getId->execute(['email' => $employee['email']]);
+            $id = $getId->fetch();
+            return ['User added correctly', $id['id']];
         } catch (PDOException $e) {
-            return $e;
+            return ["Problem with database", $e];
         }
     }
 
@@ -62,5 +65,24 @@ class DashboardModel extends Model
         } catch (PDOException $e) {
             return $e;
         }
+    }
+
+    function uifacesRequest($age = false, $gender = false, $limit = 8)
+    {
+        $partial_url = $gender ? "&gender[]=$gender&from_age=" . ($age - 5) . "&to_age=" . ($age + 10) : "";
+        $url = "https://uifaces.co/api?limit=$limit$partial_url";
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'X-API-KEY: 177AEE4B-C5854FEC-AEB8531D-318C0073'
+        ));
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $result = curl_exec($ch);
+
+        curl_close($ch);
+
+        return json_decode($result, true);
     }
 }
