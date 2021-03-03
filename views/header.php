@@ -18,7 +18,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light nav-ass">
 		<div class="container-fluid">
-			<a class="navbar-logo-ass" href="#">
+			<a class="navbar-logo-ass" href="<?= URL; ?>dashboard">
 				<img src="<?= URL; ?>assetsOld/images/logo_AS2.png" alt="" width="30" height="24" class="d-inline-block align-top">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

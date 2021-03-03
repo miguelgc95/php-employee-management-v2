@@ -14,7 +14,6 @@ class App
         $this->setController();
         $this->setMethod();
         $this->setParams();
-        //$session = new Session();
     }
 
     function routing()
