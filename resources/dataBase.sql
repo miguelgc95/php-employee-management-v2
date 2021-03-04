@@ -10,13 +10,13 @@ CREATE TABLE employees (
   lastName varchar(50) DEFAULT '""',
   email varchar(50) NOT NULL UNIQUE,
   gender varchar(50) DEFAULT '""',
-  age int(3) NOT NULL,
+  age tinyint NOT NULL,
   streetAddress varchar(50) NOT NULL,
   city varchar(50) NOT NULL,
   state varchar(3) NOT NULL,
   postalCode varchar(50) NOT NULL,
   phoneNumber varchar(50) NOT NULL UNIQUE,
-  avatar varchar(100) DEFAULT '"http://localhost/prueba_employees_v2/assetsOld/images/no-user.png"',
+  avatar text DEFAULT '"http://localhost/prueba_employees_v2/assets/images/no-user.png"',
   PRIMARY KEY (id)
 );
 

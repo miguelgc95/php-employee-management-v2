@@ -16,11 +16,11 @@ export const helpers = {
       data: employeeList,
 
       onItemDeleting: function (args) {
-        deleteMethod.url('deleteEmployee', args.item.id).done(() => {
+        deleteMethod.url('deleteEmployee', args.item.id).done(data => {
           $('.toast-msg').html(`
               <div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
                 <div class='toast-body'>
-                  Employee deleted correctly
+                ${data}
                 </div>
               </div>
 
@@ -41,7 +41,7 @@ export const helpers = {
           $('.toast-msg').html(`
                 <div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
                   <div class='toast-body'>
-                    Employee created correctly
+                  ${data}
                   </div>
                 </div>
 
@@ -54,11 +54,11 @@ export const helpers = {
         });
       },
       onItemUpdating: function (args) {
-        putMethod.url('updateEmployee', args.item).done(() => {
+        putMethod.url('updateEmployee', args.item).done(data => {
           $('.toast-msg').html(`
                 <div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>
                   <div class='toast-body'>
-                    Employee updated correctly
+                    ${data}
                   </div>
                 </div>
 

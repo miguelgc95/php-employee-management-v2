@@ -21,7 +21,7 @@ require("views/header.php");
 <script>
 	const URL = "<?= URL; ?>"
 </script>
-<script src="<?= URL; ?>assetsOld/js/index.js" type="module"></script>
+<script src="<?= URL; ?>assets/js/index.js" type="module"></script>
 <script>
 	$(".toast").toast({
 		delay: 3000

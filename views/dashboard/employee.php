@@ -14,7 +14,7 @@ require("views/header.php");
 <section id="form-wrapper">
 	<div class="container overflow-hidden">
 		<form class="needs-validation" action="<?= URL . "dashboard/" . (isset($this->employee) ?  "updateEmployee" : "addEmployee"); ?>" method="POST">
-			<img src="<?= isset($this->employee['avatar']) ? $this->employee['avatar'] : URL . "assetsOld/images/no-user.png" ?>" class="img_profile" alt="avatar">
+			<img src="<?= isset($this->employee['avatar']) ? $this->employee['avatar'] : URL . "assets/images/no-user.png" ?>" class="img_profile" alt="avatar">
 			<div class="container_avatar">
 				<?php
 				if (isset($this->result)) require("views/dashboard/imageGallery.php");
