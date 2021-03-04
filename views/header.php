@@ -48,12 +48,3 @@
 
 		</div>
 	</nav>
-
-
-
-	<!-- <script>
-		var url = window.location.pathname.split("src/")[1];
-		$('.nav-link').filter(function() {
-			return $(this).attr('href') == url;
-		}).addClass('active');
-	</script> -->
