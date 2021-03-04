@@ -40,3 +40,9 @@ main,
 .jsgrid-insert-row > .jsgrid-cell {
   background: #ffc2aeba;
 }
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

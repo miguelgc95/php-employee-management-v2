@@ -96,6 +96,7 @@ require "views/footer.php";
 		delay: 3000
 	});
 	$(".toast").toast('show');
+	$('#newEmployeeLink').addClass('active');
 </script>
 </body>
 

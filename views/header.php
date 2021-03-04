@@ -26,12 +26,20 @@
 			</button>
 			<div class="collapse navbar-collapse text-center" id="navbarNav">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item">
+					<li class="nav-item" id="dashboardLink">
 						<a class="nav-link" aria-current="page" href="<?= URL; ?>dashboard">Dashboard</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item" id='newEmployeeLink'>
 						<a class="nav-link" href="<?= URL; ?>dashboard/newEmployee">Employees</a>
 					</li>
+					<?= $_SESSION['name'] == 'admin' ? "
+					<li class='nav-item' id='usersLink'>
+						<a class='nav-link' href='" . URL . "users'>Users</a>
+					</li>
+					<li class='nav-item' id='newUsersLink'>
+						<a class='nav-link' href='" . URL . "users/newUser'>Create User</a>
+					</li>"
+						: "" ?>
 					<li class="nav-item">
 						<a class="btn btn-ass float-end" href="<?= URL; ?>main/logout">Logout</a>
 					</li>
