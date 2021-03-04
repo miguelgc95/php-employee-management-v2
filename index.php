@@ -15,7 +15,7 @@ if (isset($_SESSION['life'])) {
   if ((time() - $_SESSION['init'] > $_SESSION['life']) && !($app->getController() == "main" && $app->getMethod() == "logoutByTime")) {
     header("Location: " . URL . "main/logoutByTime");
     die;
-  } else if (($app->getController() == 'main' && !($app->getMethod())) || ($_SESSION['name'] != 'admin' && $app->getController() == "user")) {
+  } else if (($app->getController() == 'main' && !($app->getMethod())) || ($_SESSION['name'] != 'admin' && $app->getController() == "users")) {
     header("Location: " . URL . "dashboard");
     die;
   }
